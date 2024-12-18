@@ -1,0 +1,14 @@
+# Ignore Python virtual environment
+venv/
+
+# Ignore SQLite database
+db.sqlite3
+
+# Ignore environment variable files
+.env
+
+# Ignore __pycache__ and other Python cache files
+__pycache__/
+
+# Ignore system-specific files
+.DS_Store
