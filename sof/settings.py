@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     "drf_yasg",
     "posts",
 
-    "corsheaders"
+    "corsheaders",
+    'django.contrib.staticfiles',
 ]
 
 AUTH_USER_MODEL = 'users.User'
