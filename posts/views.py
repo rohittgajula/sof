@@ -15,8 +15,10 @@ from .pagination import CustomPagination
 
 from drf_yasg.utils import swagger_auto_schema
 
+from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt
 @swagger_auto_schema(method='POST', request_body=CreateAnswerSerializer)
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -41,6 +43,7 @@ def create_answer_for_question(request, question_id):
         }, status.HTTP_400_BAD_REQUEST)
     
 
+@csrf_exempt
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_answers_for_question(request, question_id):
@@ -61,6 +64,7 @@ def get_answers_for_question(request, question_id):
     }, status.HTTP_200_OK)
 
 
+@csrf_exempt
 @swagger_auto_schema(method='PATCH', request_body=CreateAnswerSerializer)
 @api_view(['PATCH'])
 @permission_classes([IsAuthenticated])
@@ -96,6 +100,8 @@ def update_answer(request, answer_id):
             'error':serializer.errors
         }, status.HTTP_400_BAD_REQUEST)
     
+
+@csrf_exempt
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def delete_answer(request, answer_id):
@@ -119,6 +125,8 @@ def delete_answer(request, answer_id):
         'message':f'Answer deleted with id {answer_id}'
     }, status.HTTP_200_OK)
 
+
+@csrf_exempt
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def all_question(request):
@@ -134,6 +142,8 @@ def all_question(request):
         'data':result_page
     })
 
+
+@csrf_exempt
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def detail_question_view(request, question_id):
@@ -149,6 +159,7 @@ def detail_question_view(request, question_id):
     }, status.HTTP_200_OK)
 
 
+@csrf_exempt
 @swagger_auto_schema(method='POST', request_body=CreateQuestionSerializer)
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -175,6 +186,7 @@ def create_question(request):
         }, status.HTTP_400_BAD_REQUEST)
     
 
+@csrf_exempt
 @swagger_auto_schema(method='PATCH', request_body=CreateQuestionSerializer)
 @api_view(['PATCH'])
 @permission_classes([IsAuthenticated])
@@ -206,6 +218,7 @@ def update_question(request, question_id):
         }, status.HTTP_400_BAD_REQUEST)
     
 
+@csrf_exempt
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated, IsAdminUser])
 def delete_question(request, question_id):
@@ -232,6 +245,7 @@ def delete_question(request, question_id):
         }, status.HTTP_200_OK)
     
 
+@csrf_exempt
 @swagger_auto_schema(method='POST', request_body=CreateCommentSerializer)
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -259,6 +273,7 @@ def create_comment_for_question(request, question_id):
         }, status.HTTP_400_BAD_REQUEST)
     
 
+@csrf_exempt
 @swagger_auto_schema(method='POST', request_body=CreateCommentSerializer)
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -286,6 +301,7 @@ def create_comment_for_answer(request, answer_id):
         }, status.HTTP_400_BAD_REQUEST)
     
 
+@csrf_exempt
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def delete_comment(request, comment_id):
@@ -315,6 +331,7 @@ def delete_comment(request, comment_id):
     }, status.HTTP_200_OK)
 
 
+@csrf_exempt
 @swagger_auto_schema(method='POST', request_body=TagSerializer)
 @api_view(['POST'])
 @permission_classes([IsAdminUser])
@@ -336,6 +353,7 @@ def create_tag(request):
         }, status.HTTP_400_BAD_REQUEST)
     
 
+@csrf_exempt
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def all_tags(request):
@@ -348,6 +366,7 @@ def all_tags(request):
     }, status.HTTP_200_OK)
 
 
+@csrf_exempt
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
 def delete_tag(request, tag_id):

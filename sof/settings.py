@@ -38,7 +38,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_HEADERS = [
     'content-type',
     'authorization',
+    'Access-Control-Allow-Origin',
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://sof-o7z9.onrender.com']
 
 # Application definition
 
