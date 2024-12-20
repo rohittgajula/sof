@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', "django-insecure-*8y)ytpjy5w$#1=c)ozpi0#$@*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False')
 
-ALLOWED_HOSTS = ['sof-o7z9.onrender.com', 'localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['sof-o7z9.onrender.com', 'localhost', '127.0.0.1', '0.0.0.0', '*.onrender.com']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -39,9 +39,16 @@ CORS_ALLOW_HEADERS = [
     'content-type',
     'authorization',
     'Access-Control-Allow-Origin',
+    'X-CSRFToken',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://sof-o7z9.onrender.com']
+CSRF_TRUSTED_ORIGINS = [
+    'https://sof-o7z9.onrender.com',
+    'https://*.onrender.com',
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 # Application definition
 
@@ -83,9 +90,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('Bearer', ),
-}
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
@@ -136,10 +140,21 @@ WSGI_APPLICATION = "sof.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB', 'sof'),
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', '2710'),
+        'HOST': os.getenv('POSTGRES_HOST', 'db'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
 }
 
