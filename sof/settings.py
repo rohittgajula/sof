@@ -39,6 +39,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
 INSTALLED_APPS = [
+    "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -50,7 +51,6 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "drf_yasg",
     "posts",
-    "corsheaders",
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -88,7 +88,8 @@ SWAGGER_SETTINGS = {
             'in':'header',
         }
     },
-    'DEFAULT_URL': 'https://sof-o7z9.onrender.com',
+    'USE_SESSION_AUTH': False,
+    'REFETCH_SCHEMA_WITH_AUTH': True,
 }
 
 CSRF_COOKIE_NAME = "csrftoken"

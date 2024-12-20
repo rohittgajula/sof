@@ -11,7 +11,9 @@ from .pagination import CustomPagination
 
 from drf_yasg.utils import swagger_auto_schema
 
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def current_user(request):
@@ -22,7 +24,7 @@ def current_user(request):
         'user':serializer.data
     }, status.HTTP_200_OK)
 
-
+@csrf_exempt
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
 def all_users(request):
@@ -38,6 +40,7 @@ def all_users(request):
         'users':result_page
     })
 
+@csrf_exempt
 @swagger_auto_schema(method='POST', request_body=CreateUpdateSerializer)
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -56,6 +59,7 @@ def create_user(request):
             'error':serializer.errors
         }, status.HTTP_400_BAD_REQUEST)
     
+@csrf_exempt
 @swagger_auto_schema(method='PATCH', request_body=CreateUpdateSerializer)
 @api_view(['PATCH'])
 def update_user(request, pk):
@@ -82,6 +86,7 @@ def update_user(request, pk):
         }, status.HTTP_400_BAD_REQUEST)
     
 
+@csrf_exempt
 @api_view(['DELETE'])
 @permission_classes([AllowAny])
 def delete_user(request, pk):
