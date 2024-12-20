@@ -35,6 +35,10 @@ ALLOWED_HOSTS = ['sof-o7z9.onrender.com', 'localhost', '127.0.0.1', '0.0.0.0']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+]
 
 # Application definition
 
