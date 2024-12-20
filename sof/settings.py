@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', "django-insecure-*8y)ytpjy5w$#1=c)ozpi0#$@*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False')
 
-ALLOWED_HOSTS = ['sof-o7z9.onrender.com', 'localhost', '127.0.0.1', '0.0.0.0', '*.onrender.com']
+ALLOWED_HOSTS = ['sof-xl3q.onrender.com', 'localhost', '127.0.0.1', '0.0.0.0', '*.onrender.com']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -43,7 +43,7 @@ CORS_ALLOW_HEADERS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://sof-o7z9.onrender.com',
+    'https://sof-xl3q.onrender.com',
     'https://*.onrender.com',
 ]
 
