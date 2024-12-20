@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', "django-insecure-*8y)ytpjy5w$#1=c)ozpi0#$@*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://sof-ec2.onrender.com', 'http://127.0.0.1:8000/']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     "posts",
 
     "corsheaders",
-    'django.contrib.staticfiles',
 ]
 
 AUTH_USER_MODEL = 'users.User'
