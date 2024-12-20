@@ -88,6 +88,7 @@ SWAGGER_SETTINGS = {
             'in':'header',
         }
     },
+    'DEFAULT_URL': 'https://sof-o7z9.onrender.com',
 }
 
 CSRF_COOKIE_NAME = "csrftoken"
